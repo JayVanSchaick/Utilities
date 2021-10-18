@@ -181,7 +181,74 @@ namespace Utils
             return output;
         }
 
+        
+        public static double[,] Smooth(double[,] ArrayToSmooth, int filterSize)
+        {
+            double[,] arrayToReturn = new double[ArrayToSmooth.GetLength(0), ArrayToSmooth.GetLength(1)];
 
+            for (int x = 0; x < ArrayToSmooth.GetLength(0); x++)
+            {
+                for (int y = 0; y < ArrayToSmooth.GetLength(1); y++)
+                {
+                    double aaValue = 0;
+                    int counter = 0;
+
+                    for (int i = x - filterSize; i < x + filterSize + 1; ++i)
+                    {
+                        if (i < 0 || i >= ArrayToSmooth.GetLength(0))
+                            continue;
+
+                        for (int j = y - filterSize; j < y + filterSize + 1; ++j)
+                        {
+                            if (j < 0 || j >= ArrayToSmooth.GetLength(1))
+                                continue;
+
+                            aaValue += ArrayToSmooth[i, j];
+                            counter++;
+
+                        }
+                    }
+
+                    arrayToReturn[x, y] = aaValue / counter;
+                }
+            }
+
+            return arrayToReturn;
+        }
+
+        public static float[,] Smooth(float[,] ArrayToSmooth, int filterSize)
+        {
+            float[,] arrayToReturn = new float[ArrayToSmooth.GetLength(0), ArrayToSmooth.GetLength(1)];
+
+            for (int x = 0; x < ArrayToSmooth.GetLength(0); x++)
+            {
+                for (int y = 0; y < ArrayToSmooth.GetLength(1); y++)
+                {
+                    float aaValue = 0;
+                    int counter = 0;
+
+                    for (int i = x - filterSize; i < x + filterSize + 1; ++i)
+                    {
+                        if (i < 0 || i >= ArrayToSmooth.GetLength(0))
+                            continue;
+
+                        for (int j = y - filterSize; j < y + filterSize + 1 ; ++j)
+                        {
+                            if (j < 0 || j >= ArrayToSmooth.GetLength(1))
+                                continue;
+
+                            aaValue += ArrayToSmooth[i, j];
+                            counter++;
+
+                        }
+                    }
+                    
+                    arrayToReturn[x, y] = aaValue / counter;
+                }
+            }
+
+            return arrayToReturn;
+        }
 
     }
 
