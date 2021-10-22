@@ -146,7 +146,7 @@ namespace Utils
             catch (Exception ex)
             {
 
-                Console.Write(ex.ToString());
+                HandleError(ex);
 
             }
 
@@ -195,7 +195,7 @@ namespace Utils
             catch (Exception ex)
             {
 
-                Console.Write(ex.ToString());
+                HandleError(ex);
 
             }
 
@@ -235,7 +235,7 @@ namespace Utils
                 }
                 catch (Exception ex)
                 {
-                    Console.Write(ex.ToString());
+                    HandleError(ex);
                 }
 
             } while (_jobListQueue != null && _jobListQueue.Count != 0);
@@ -434,7 +434,7 @@ namespace Utils
                 catch (Exception ex)
                 {
 
-                    Console.Write(ex.ToString());
+                    HandleError(ex);
                 }
 
 
